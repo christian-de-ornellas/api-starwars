@@ -23,7 +23,7 @@ npm install
 3. No seu terminal e dentro pasta da aplicação, execute comando abaixo.
 
 ~~~~
-node src/index.js
+npm start
 ~~~~
 
 ### Rotas da API
