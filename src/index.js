@@ -18,10 +18,8 @@ app.use(bodyParser.json())
 //Responsável por entender os parametros via url.
 app.use(bodyParser.urlencoded({ extended: false }))
 
-//Rota
-app.get('/', async(req, res) => {
-    res.send('Hello World')
-})
+//Rota de autenticação
+require('./controllers/authController')(app)
 
 //Ativa a API na porta 3000
 app.listen(3000)
