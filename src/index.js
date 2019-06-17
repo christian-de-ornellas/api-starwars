@@ -6,11 +6,11 @@
 // O express é responsável por roterizar a API.
 const express = require('express')
 
-// Instâncio aqui o express
-const app = express()
-
 // O body-parser é responsável por gerenciar o app no modelo **REST**.
 const bodyParser = require('body-parser')
+
+// Instâncio aqui o express
+const app = express()
 
 // Aqui eu padronizo o body parser para sempre retornar **JSON**.
 app.use(bodyParser.json())
@@ -20,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //Rota de autenticação
 require('./controllers/authController')(app)
+
+//Rota de planetas
+require('./controllers/planetController')(app)
 
 //Ativa a API na porta 3000
 app.listen(3000)

@@ -36,7 +36,8 @@ router.post('/register', async(req, res) => {
         //Não mostra o password apos a criação do login
         user.password = undefined
 
-        return res.send({ user })
+        // return res.status(201).send({ user })
+        res.send({ user, token: generateToken({ id: user.id }) })
 
     } catch (err) {
         return res.status(400).send({ error: 'Registration failed' })
@@ -44,7 +45,7 @@ router.post('/register', async(req, res) => {
 })
 
 // rota de autenticação
-router.post('/authentication', async(req, res) => {
+router.post('/authenticate', async(req, res) => {
 
     //receberá da requisição.
     const { email, password } = req.body

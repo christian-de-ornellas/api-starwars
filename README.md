@@ -26,9 +26,42 @@ npm install
 npm start
 ~~~~
 
-### Rotas da API
+## Rotas da API
+
+A API é acessada mediante a uma autenticação por JWT, siga os passos abaixo.
+
+### Cadastro de usuário
+
+Para cadastrar o usuário acesse a url abaixo e coloque os campos da requisição.
 
 ~~~~
-http://localhost:3000/Auth
+http://localhost:3000/auth/register
 ~~~~
+
+REQUEST
+~~~~
+{
+	"name": "Coloque aqui o nome",
+	"email": "coloque aqui o e-mail",
+	"password": "Coloque aqui uma senha"
+	
+}
+~~~~
+
+### Autenticação de Usuário
+Digite o e-mail e senha cadastrada para logar, após a autenticação será retornado um **token** para você colocar no Bearer do **postman, insomnia** ou software rest de sua escolha.
+~~~~
+http://localhost:3000/auth/register
+~~~~
+
+REQUEST
+~~~~
+{	
+	"email": "coloque aqui o e-mail",
+	"password": "Coloque aqui uma senha"
+	
+}
+~~~~
+
+
 
