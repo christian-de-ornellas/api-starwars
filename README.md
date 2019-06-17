@@ -38,30 +38,98 @@ Para cadastrar o usuário acesse a url abaixo e coloque os campos da requisiçã
 http://localhost:3000/auth/register
 ~~~~
 
-REQUEST
+REQUEST =  **POST**
 ~~~~
 {
-	"name": "Coloque aqui o nome",
-	"email": "coloque aqui o e-mail",
-	"password": "Coloque aqui uma senha"
+	"name": "Testador",
+	"email": "auth@test.com.br",
+	"password": "123456"
 	
 }
 ~~~~
 
 ### Autenticação de Usuário
-Digite o e-mail e senha cadastrada para logar, após a autenticação será retornado um **token** para você colocar no Bearer do **postman, insomnia** ou software rest de sua escolha.
+Digite o e-mail e senha cadastrada para logar, após a autenticação será retornado um **token** para você colocar no **Bearer** do **postman, insomnia** ou software rest de sua escolha.
 ~~~~
 http://localhost:3000/auth/register
 ~~~~
 
-REQUEST
+REQUEST =  **POST**
 ~~~~
 {	
-	"email": "coloque aqui o e-mail",
-	"password": "Coloque aqui uma senha"
+	"email": "auth@test.com.br",
+	"password": "123456"
 	
 }
 ~~~~
+
+### Cadastrar Planeta
+
+Para cadastrar um planeta você precisa inserir os dados do planeta como no exemplo abaixo.
+
+~~~~
+http://localhost:3000/planets
+~~~~
+
+REQUEST =  **POST**
+~~~~
+{
+	"name": "Dagobah",
+	"climate": "murky",
+	"terrain": "swamp, jungles"
+}
+~~~~
+
+### Listar todos Planetas
+
+Para listar todos os planetas cadastrados você precisa executar um **REQUEST GET** usando o endereço abaixo.
+
+~~~~
+http://localhost:3000/planets
+~~~~
+
+### Consultar planeta por id
+
+Para consultar planeta por id você precisa acessa a rota **listar todos os planetas** copiar o id de um planeta e executar o **REQUEST GET** como no exemplo abaixo.
+
+~~~~
+http://localhost:3000/planets/iddoplaneta
+~~~~
+
+### Consultar planeta por nome
+
+Para consultar planeta por id você precisa acessa a rota **listar todos os planetas** copiar o nome de um planeta e executar o **REQUEST GET** como no exemplo abaixo.
+
+~~~~
+http://localhost:3000/planets/nomedoplaneta
+~~~~
+
+### Remover um planeta
+
+Para remover planeta você precisa acessa a rota **listar todos os planetas** copiar o id de um planeta colar na url e executar o **REQUEST DELETE** como no endereço abaixo.
+
+~~~~
+http://localhost:3000/planets/iddoplaneta
+~~~~
+
+### Atualizar Planeta
+
+Para atualizar um planeta você precisa acessa a rota **listar todos os planetas** copiar o id do planeta que deseja atualizar e colar na rota como no exemplo abaixo, alterar as informações e executar.
+
+~~~~
+http://localhost:3000/planets/iddoplaneta
+~~~~
+
+REQUEST =  **POST**
+~~~~
+{
+	"name": "Dagobah",
+	"climate": "murky",
+	"terrain": "swamp, jungles"
+}
+~~~~
+
+
 
 
 
