@@ -26,12 +26,25 @@ router.get('/', async(req, res) => {
     }
 })
 
-// Lista um único registro
+// Lista um único registro por id
 router.get('/:planetId', async(req, res) => {
     try {
 
         // Lista os projetos trazendo também os dados do relacionamento com o user através do populate.
         const planet = await Planet.findById(req.params.planetId).populate('user')
+        return res.send({ planet })
+
+    } catch (err) {
+        return res.status(400).send({ error: "Error loading planet" })
+    }
+})
+
+// Lista um único registro por nome
+router.get('/name/:planetName', async(req, res) => {
+    try {
+
+        // Lista os projetos trazendo também os dados do relacionamento com o user através do populate.
+        const planet = await Planet.find({ name: req.params.planetName }).populate('user')
         return res.send({ planet })
 
     } catch (err) {
