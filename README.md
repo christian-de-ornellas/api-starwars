@@ -80,6 +80,31 @@ REQUEST =  **POST**
 }
 ~~~~
 
+### Conta o número filmes que cada planeta participou.
+
+Para contar o número de participações em filmes basta executar um **GET**.
+
+Nós estamos consumindo a API https://swapi.co/api/planets para receber as informações da franquia.
+
+Está rota é divida em páginas que vão de 1 a 7 como no exemplo abaixo.
+
+~~~~
+http://localhost:3000/planets/swapi/1
+
+http://localhost:3000/planets/swapi/2
+
+http://localhost:3000/planets/swapi/3
+
+http://localhost:3000/planets/swapi/4
+
+http://localhost:3000/planets/swapi/5
+
+http://localhost:3000/planets/swapi/6
+
+http://localhost:3000/planets/swapi/7
+~~~~
+
+
 ### Listar todos Planetas
 
 Para listar todos os planetas cadastrados você precisa executar um **REQUEST GET** usando o endereço abaixo.

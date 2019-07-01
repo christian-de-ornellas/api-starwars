@@ -1,17 +1,58 @@
 // O express é responsável por roterizar a API.
 const express = require('express')
 
+//Autenticação
 const authMiddleware = require('../middlewares/auth')
 
 // Models
 const Planet = require('../models/planet')
 
 
+// Consumir API
+const axios = require('axios')
+
 // Gerencia as rotas.
 const router = express.Router()
 
 // Verifica autenticação.
 router.use(authMiddleware)
+
+//lista os planetas da franquia que estão na API swapi.co e informe quantos filmes cada um participou.
+router.get('/swapi/:pageNumber', async(req, res) => {
+    try {
+
+        //Numero da página
+        const page = req.params.pageNumber
+
+        const api = await axios.get(`https://swapi.co/api/planets/?page=${page}`)
+            .then((response) => {
+
+                // Recebe os dados
+                let dataApi = response.data.results
+                    // Trata os dados
+                const planetForFilms = dataApi.map(function(data_planet) {
+
+                    let planet_name = data_planet.name
+                    let films_count = data_planet.films.length
+
+                    const numberFilmsForPlanet = {
+                        planet: planet_name,
+                        films: films_count
+                    }
+
+
+                    return numberFilmsForPlanet
+                })
+
+                res.send(planetForFilms)
+            })
+
+
+
+    } catch (err) {
+        return res.status(400).send({ error: "Error loading planets" })
+    }
+})
 
 //listar todos os planetas
 router.get('/', async(req, res) => {
@@ -99,6 +140,7 @@ router.delete('/:planetId', async(req, res) => {
         return res.status(400).send({ error: "Error deleting planet" })
     }
 })
+
 
 
 module.exports = app => app.use('/planets', router)
